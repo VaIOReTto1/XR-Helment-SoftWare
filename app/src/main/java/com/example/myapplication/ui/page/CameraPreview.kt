@@ -16,7 +16,6 @@ import java.util.concurrent.Executors
 @Composable
 fun CameraPreview() {
     val context = LocalContext.current
-    val cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
 
     AndroidView(factory = { ctx ->
         val previewView = PreviewView(ctx)
@@ -31,7 +30,6 @@ fun CameraPreview() {
                 }
 
             try {
-                // 选择后置摄像头作为默认
                 val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
                 cameraProvider.unbindAll()
                 cameraProvider.bindToLifecycle(
